@@ -20,13 +20,13 @@ public class EmployeeManagementSystemApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Employee employee = new Employee();
-        employee.setFistName("Vaibhav");
+        employee.setFirstName("Vaibhav");
         employee.setLastName("Sable");
         employee.setEmailId("vaibhavsable150@gmail.com");
         employeeRepository.save(employee);
 
         Employee employee1 = new Employee();
-        employee1.setFistName("John"); 
+        employee1.setFirstName("John"); 
         employee1.setLastName("Sina");
         employee1.setEmailId("Joha@11gmail.com");
         employeeRepository.save(employee1);

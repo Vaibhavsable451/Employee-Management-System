@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.vaibhav.service.GeminiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -33,8 +32,6 @@ public class EmployeeController {
   
 	@Autowired
 	private EmployeeRepository employeeRepository;
-    @Autowired
-    private GeminiService geminiService;
     @Value("${frontend.url}")
     private String frontendUrl;
 	
@@ -83,15 +80,6 @@ public class EmployeeController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
-    }
-    @PostMapping("/agent/query")
-    public ResponseEntity<?> chatWithGemini(@RequestBody Map<String, String> body) {
-        String query = body.get("query");
-
-        // Gemini will handle both SQL generation and execution
-        Object result = geminiService.askGeminiAndExecute(query);
-
-        return ResponseEntity.ok(Map.of("response", result));
     }
 
     // Search endpoint for AgentX or frontend widgets

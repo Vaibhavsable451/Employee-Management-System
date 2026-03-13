@@ -37,15 +37,16 @@ const AddEmployeeComponent = () => {
     }
 
     useEffect(() => {
-
-        EmployeeService.getEmployeeById(id).then((response) =>{
-            setFirstName(response.data.firstName)
-            setLastName(response.data.lastName)
-            setEmailId(response.data.emailId)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [])
+        if (id) {
+            EmployeeService.getEmployeeById(id).then((response) =>{
+                setFirstName(response.data.firstName)
+                setLastName(response.data.lastName)
+                setEmailId(response.data.emailId)
+            }).catch(error => {
+                console.log(error)
+            })
+        }
+    }, [id])
 
     const title = () => {
 

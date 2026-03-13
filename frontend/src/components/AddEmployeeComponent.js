@@ -4,7 +4,7 @@ import EmployeeService from '../service/EmployeeService'
 
 const AddEmployeeComponent = () => {
 
-    const [fistName, setFistName] = useState('')
+    const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [emailId, setEmailId] = useState('')
     const navigate = useNavigate();
@@ -13,7 +13,7 @@ const AddEmployeeComponent = () => {
     const saveOrUpdateEmployee = (e) => {
         e.preventDefault();
 
-        const employee = {fistName, lastName, emailId}
+        const employee = {firstName, lastName, emailId}
 
         if(id){
             EmployeeService.updateEmployee(id, employee).then((response) => {
@@ -39,7 +39,7 @@ const AddEmployeeComponent = () => {
     useEffect(() => {
 
         EmployeeService.getEmployeeById(id).then((response) =>{
-            setFistName(response.data.fistName)
+            setFirstName(response.data.firstName)
             setLastName(response.data.lastName)
             setEmailId(response.data.emailId)
         }).catch(error => {
@@ -74,8 +74,8 @@ const AddEmployeeComponent = () => {
                                         placeholder = "Enter fist name"
                                         name = "firstName"
                                         className = "form-control"
-                                        value = {fistName}
-                                        onChange = {(e) => setFistName(e.target.value)}
+                                        value = {firstName}
+                                        onChange = {(e) => setFirstName(e.target.value)}
                                     >
                                     </input>
                                 </div>
